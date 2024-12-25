@@ -1,9 +1,10 @@
-# Group_work
+# Restaurant_Menu_Management_System_2024_25
 
-Group project for web-development 
-#Project Title
+ 
+#Restaurant Menu Management System
 
 ##Group Members
+
 | Name             | ID          |
 |:----------------:|:-----------:|
 | Bemnet Asseged   | UGR/2591/15 |
