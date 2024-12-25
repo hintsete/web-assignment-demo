@@ -1,4 +1,4 @@
-# Chanoly_Menu_Management_System_2024_25
+# Chanoly_Restaurant_Menu_Management_System_2024_25
 
 ##Group Members
 
