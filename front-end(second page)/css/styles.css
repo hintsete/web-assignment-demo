@@ -52,21 +52,19 @@ body {
   .menu-categories{
     width: 65%;
   }
-  
-  
-  .menu-aside {
-    position: fixed; /* Fix the position */
-    top: 169px; 
-    right: 60px; /* Align to the right side */
-    width: 350px; /* Set a fixed width */
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 5px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    height: auto;
-    overflow-y: 0;
-}
+.menu-aside {
+  position: fixed; /* Fix the position */
+  top: 169px; 
+  right: 60px; /* Align to the right side */
+  width: 350px; /* Set a fixed width */
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 5px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  max-height: 400px; /* Set a maximum height */
+  overflow-y: auto; /* Enable vertical scrolling */}
+
 .menu-aside img{
   width: 8%;
 }
@@ -195,17 +193,18 @@ input[type="number"]::-webkit-outer-spin-button {
     font-size: 15px;
     margin-top: 10px;
   }
-  
+ 
   .confirm-button {
-    background-color: green;
+    width: 80%; /* Full width */
+    padding: 10px;
+    background-color: #28a745; /* Green background */
     color: white;
     border: none;
-    padding: 10px 20px;
     border-radius: 5px;
     cursor: pointer;
-    width: 40%;
     font-size: 16px;
-  }
+}
+
 .confirm-button:hover {
     background-color: #0b430e; /* Darker green on hover */
 }
@@ -356,5 +355,7 @@ input[type="number"]::-webkit-outer-spin-button {
     color: #ffe0b3;
   }
  
+
+  
 
   
