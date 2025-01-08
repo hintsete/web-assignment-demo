@@ -2,9 +2,8 @@ import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { UserModule } from './user/user.module';
-import { MenuItemModule } from './menu_items/menu_items.module';
-import { AuthModule } from './auth/auth.module';
+import { UsersModule } from './user/user.module';
+import { MenuItemsModule } from './menu_items/menu_items.module';
 import { ConfigModule } from '@nestjs/config';
 import { dataSourceOptions } from 'db/data-source';
 
@@ -15,9 +14,8 @@ import { dataSourceOptions } from 'db/data-source';
       envFilePath: '.env', // Path to your environment variables file
     }),
     TypeOrmModule.forRoot(dataSourceOptions),
-    UserModule,
-    MenuItemModule,
-    AuthModule,
+    UsersModule,
+    MenuItemsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

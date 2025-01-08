@@ -1,18 +1,18 @@
 /* eslint-disable prettier/prettier */
 import { Test, TestingModule } from '@nestjs/testing';
-import { MenuItemController } from './menu_items.controller';
-import { MenuItemService } from './menu_items.service';
+import { MenuItemsController } from './menu_items.controller';
+import { MenuItemsService } from './menu_items.service';
 
 describe('MenuItemsController', () => {
-  let controller: MenuItemController;
+  let controller: MenuItemsController;
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      controllers: [MenuItemController],
-      providers: [MenuItemService],
+      controllers: [MenuItemsController],
+      providers: [MenuItemsService],
     }).compile();
 
-    controller = module.get<MenuItemController>(MenuItemController);
+    controller = module.get<MenuItemsController>(MenuItemsController);
   });
 
   it('should be defined', () => {

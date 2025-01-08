@@ -17,8 +17,7 @@ export class MenuItemEntity {
   @Column("decimal", { precision: 10, scale: 2 })
   price: number;
 
-  @Column()
-  image_url: string;
+  
 
   @Column({
     type: "enum",

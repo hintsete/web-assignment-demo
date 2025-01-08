@@ -1,38 +1,54 @@
 /* eslint-disable prettier/prettier */
-import { Controller, Get, Post, Put, Delete, Param, Body, UseGuards } from '@nestjs/common';
-import { MenuItemService } from './menu_items.service';
-import { JwtAuthGuard } from '../auth/jwt-auth.guard';
-import { Roles } from '../utility/common/user-roles.enum';
-import { RolesGuard } from '../auth/roles.guard';
-import { RolesDecorator } from '../auth/roles.decorator';
+import {
+  Controller,
+  Get,
+  Post,
+  Put,
+  Delete,
+  Param,
+  Body,
+  Query,
+  ParseIntPipe,
+} from '@nestjs/common';
+import { MenuItemsService } from './menu_items.service';
+import { MenuItemEntity } from './entities/menu_item.entity';
 
 @Controller('menu-items')
-export class MenuItemController {
-  constructor(private readonly menuItemService: MenuItemService) {}
+export class MenuItemsController {
+  constructor(private readonly menuItemsService: MenuItemsService) {}
 
   @Get()
-  async getAllMenuItems() {
-    return await this.menuItemService.getAllMenuItems();
+  getAllMenuItems(
+    @Query('category') category?: string,
+  ): Promise<MenuItemEntity[]> {
+    if (category) {
+      return this.menuItemsService.getMenuItemsByCategory(category);
+    }
+    return this.menuItemsService.getAllMenuItems();
+  }
+
+  @Get(':id')
+  getMenuItemById(@Param('id', ParseIntPipe) id: number): Promise<MenuItemEntity> {
+    return this.menuItemsService.getMenuItemById(id);
   }
 
   @Post()
-  @UseGuards(JwtAuthGuard, RolesGuard)
-  @RolesDecorator(Roles.ADMIN)
-  async createMenuItem(@Body() body: any) {
-    return await this.menuItemService.createMenuItem(body);
+  createMenuItem(
+    @Body() menuItemData: Partial<MenuItemEntity>,
+  ): Promise<MenuItemEntity> {
+    return this.menuItemsService.createMenuItem(menuItemData);
   }
 
   @Put(':id')
-  @UseGuards(JwtAuthGuard, RolesGuard)
-  @RolesDecorator(Roles.ADMIN)
-  async updateMenuItem(@Param('id') id: number, @Body() body: any) {
-    return await this.menuItemService.updateMenuItem(id, body);
+  updateMenuItem(
+    @Param('id', ParseIntPipe) id: number,
+    @Body() updateData: Partial<MenuItemEntity>,
+  ): Promise<MenuItemEntity> {
+    return this.menuItemsService.updateMenuItem(id, updateData);
   }
 
   @Delete(':id')
-  @UseGuards(JwtAuthGuard, RolesGuard)
-  @RolesDecorator(Roles.ADMIN)
-  async deleteMenuItem(@Param('id') id: number) {
-    return await this.menuItemService.deleteMenuItem(id);
+  deleteMenuItem(@Param('id', ParseIntPipe) id: number): Promise<void> {
+    return this.menuItemsService.deleteMenuItem(id);
   }
 }
